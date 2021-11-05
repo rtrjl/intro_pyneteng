@@ -1,0 +1,8 @@
+# get all interfaces , filter vlan in python script
+Value Interface ((Gi|Te|Hu)\S+)
+Value Status (\S+)
+Value Protocol (\S+)
+Value Description (.+)
+
+Start
+  ^${Interface} \s+${Status} \s+${Protocol} \s+${Description} -> Record

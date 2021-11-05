@@ -1,0 +1,31 @@
+# get optical power
+Value Interface ((\w*\W*)*)
+Value TPAH (-?\d*\.\d*)
+Value TPWH (-?\d*\.\d*)
+Value TPWL (-?\d*\.\d*)
+Value TPAL (-?\d*\.\d*)
+Value RPAH (-?\d*\.\d*)
+Value RPWH (-?\d*\.\d*)
+Value RPWL (-?\d*\.\d*)
+Value RPAL (-?\d*\.\d*)
+Value List LANE (\d+)
+Value List TXPW (-?\d*\.\d*)
+Value List RXPW (-?\d*\.\d*)
+Value ProductId (\w*-?\w*-?\w*)
+
+Start
+  ^\s*PHY data for interface:\s*${Interface}
+  ^\s*Product ID:\s*${ProductId}\s*
+  ^\s*Transmit Power:\s*\d*\.\d*\s*\w*\s*\(${TPAH}\s*\w*\)\s*\d*\.\d*\s*\w*\s*\(${TPWH}\s*\w*\)\s*\d*\.\d*\s*\w*\s*\(${TPWL}\s*\w*\)\s*\d*\.\d*\s*\w*\s*\(${TPAL}\s*\w*\)
+  ^\s*Receive Power:\s*\d*\.\d*\s*\w*\s*\(${RPAH}\s*\w*\)\s*\d*\.\d*\s*\w*\s*\(${RPWH}\s*\w*\)\s*\d*\.\d*\s*\w*\s*\(${RPWL}\s*\w*\)\s*\d*\.\d*\s*\w*\s*\(${RPAL}\s*\w*\)
+  ^\s*Lane\s*Temp\s*Bias\s*Tx\s*Power\s*Rx\s*Power -> HundredGig
+  ^\s*Tx Bias:\s+\d+.\d+\s+mAmps -> TenGig
+
+HundredGig
+  ^\s+($LANE)\s+(((\+|\-)\d+\.\d+\s+C)|(N\/A))\s+\d+\.\d+\s+mAmps\s+\d+\.\d+\s+mW\s+\($TXPW\s+dBm\)\s+\d\.\d+\s+mW\s+\($RXPW\s+dBm\)
+  ^\s+Threshold Data\s+\( -> Record Start
+
+TenGig
+  ^\s*Tx Power:\s*\d*\.\d*\s*\w*\s*\((\<|\>/)?${TXPW}\s*\w*\)
+  ^\s*Rx Power:\s*\d*\.\d*\s*\w*\s*\((\<|\>/)?${RXPW}\s*\w*\)
+  ^\s*Product Id:\s*${ProductId}\s* -> Record Start
