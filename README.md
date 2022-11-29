@@ -18,6 +18,10 @@ Notice the (venv) prefix before the prompt, you are now in a python virtual envi
 
 `(venv) C:\Users\...\pres_python>`
 
+`git clone git@github.com:rtrjl/intro_pyneteng.git`
+
+`cd intro_pyneteng`
+
 Install dependencies :
 
 `pip install -r requirements.txt`
