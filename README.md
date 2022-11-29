@@ -8,6 +8,8 @@ https://www.python.org/ftp/python/3.9.7/python-3.9.7-amd64.exe
 
 Create a new python virtual environment
 
+`mkdir pres_python`
+
 `cd pres_python`
 
 `python -m venv venv`
